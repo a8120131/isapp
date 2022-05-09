@@ -22,7 +22,7 @@
             html = html + '<ul>';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.tweet + '</li>';
+                html = html + '<li>' + object.id + ":" + object.tweet + "(" + object.time + ")" + '</li>';   //変更箇所
             }
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
