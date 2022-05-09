@@ -15,14 +15,14 @@
         }
 
         async function doSelect() {
-            var sql = 'select * from Tweets order by time desc limit 20';
+            var sql = 'select * from Tweets order by time desc limit 20';   //変更箇所(5-1-2)
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
             html = html + '<ul>';
             for (var i = 0; i < objects.length; i++) {
                 var object = objects[i];
-                html = html + '<li>' + object.id + ":" + object.tweet + "(" + object.time + ")" + '</li>';   //変更箇所
+                html = html + '<li>' + object.id + ":" + object.tweet + "(" + object.time + ")" + '</li>';   //変更箇所(5-1-1)
             }
             html = html + '</ul>';
             document.getElementById('result').innerHTML = html;
@@ -33,7 +33,8 @@
 
 <body>
     <h1>Tweets</h1>
-    <button onclick="button1Pressed()">X</button>
+    <input type="text" id="ward">
+    <button onclick="button1Pressed()">検索</button>
     <hr>
     <p id="result">xxxx</p>
 </body>
