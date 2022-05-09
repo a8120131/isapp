@@ -15,7 +15,7 @@
         }
 
         async function doSelect() {
-            var sql = 'select * from Tweets where tweet like "%a%" order by time desc limit 20';   //変更箇所(5-1-2)
+            var sql = 'select * from Tweets where tweet like "%' + document.getElementById('ward').value + '%" order by time desc limit 20';   //変更箇所(5-1-2)
             var objects = await osql.connect(sql);
             console.log(objects);
             var html = '';
