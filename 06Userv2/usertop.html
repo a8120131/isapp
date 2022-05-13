@@ -10,6 +10,15 @@
     <script type="text/javascript" src="../osql.js"></script>
 
     <script>
+        $().ready(function () {
+            initial();
+        });
+
+
+        function initial() {
+            var name = sessionStorage.getItem("username");
+            document.getElementById("welcome").innerHTML = "ようこそ" + name + "さん";
+        }
     </script>
 
 </head>
