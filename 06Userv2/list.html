@@ -14,11 +14,6 @@
             execSelect();
         });
 
-        function buttonPressed() {
-            doDelete();
-        }
-
-
         async function execSelect() {   //ページを開くと同時に処理される部分
             var sql = 'select * from Users';
             var objects = await osql.connect(sql);
@@ -37,22 +32,13 @@
             document.getElementById('result').innerHTML = html;
         }
 
-        async function doDelete() {   //削除ボタンを押した時に処理される部分
-            var sql = `delete from Users where id = "{` + document.getElementById("idName").value + `}"`;
+        async function buttonPressed() {   //削除ボタンを押した時に処理される部分
+            var userid = document.getElementById("idName").value;
+            var sql = `delete from Users where id = "${userid}"`;
             var objects = await osql.connect(sql);
             console.log(objects);
-            var html = '';
-            html = html + '<table border="1">';
-            for (var i = 0; i < objects.length; i++) {
-                html = html + '<tr>';
-                var object = objects[i];
-                html = html + '<td>' + object.id + '</td>';
-                html = html + '<td>' + object.name + '</td>';
-                html = html + '<td>' + '<a href="update.html?userid=' + object.id + '">変更</a>' + '</td>';
-                html = html + '</tr>';
-            }
-            html = html + '</table>';
-            document.getElementById('result').innerHTML = html;
+            document.getElementById('result').innerHTML = "削除しました";
+            document.getElementById('idName').value = "";
         }
 
     </script>
