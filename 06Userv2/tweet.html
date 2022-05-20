@@ -13,7 +13,16 @@
         $().ready(function () {
             t = 0;
             setInterval(doSelect, 2000);
+            startName();
         });
+
+
+        function startName() {
+            var sName = sessionStorage.getItem("username");
+            document.getElementById('tf1').value = sName;
+        }
+
+
         function button1Pressed() {
             doInsert();
         }
